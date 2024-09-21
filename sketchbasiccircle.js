@@ -1,0 +1,39 @@
+function setup() {
+  createCanvas(450, 800);
+}
+
+function draw() {
+  randomSeed(0);
+  background("white");
+
+  // Draw stem
+  stroke("#404040");
+  strokeWeight(2);
+  line(width / 2, height, width / 2, height / 2);
+
+  // Draw green leaves along the stem
+  noStroke();
+  fill("#1f8144");
+  for (let i = 0; i < 20; i++) {
+    let y = map(i, 0, 20, height, height / 2);
+    triangle(width / 2, y, width / 2 - random(5, 15), y - random(10, 20), width / 2 + random(5, 15), y - random(10, 20));
+  }
+
+  // Draw pink flowers on top
+  noStroke();
+  for (let i = 0; i < 150; i++) {
+    let x = width / 2 + random(-100, 100);
+    let y = height / 2 - random(50, 200);
+    let d = random(10, 30);
+
+    // Dark pink color
+    fill(160, 0, 100);
+    circle(x, y, d);
+
+    // Light pink color
+    fill(255, 192, 203);
+    circle(x, y + random(-10, 10), d * 0.7);
+  }
+}
+
+
